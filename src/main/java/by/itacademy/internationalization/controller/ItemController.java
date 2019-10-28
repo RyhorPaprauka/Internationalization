@@ -23,6 +23,6 @@ public class ItemController {
     @GetMapping
     public ResponseEntity<ItemDto> get(@RequestParam(value = "code") Integer code,
                                        @RequestParam(value = "language") Language language) {
-        return ResponseEntity.ok(itemMapper.toDto(itemService.getByCode(code), language));
+        return ResponseEntity.ok(itemService.getByCode(code, language));
     }
 }

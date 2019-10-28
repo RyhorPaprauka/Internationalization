@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Data
 @EqualsAndHashCode(of = "id")
-@NoArgsConstructor
 @Entity
 @Table(name = "attribute_lang")
 public class AttributeLang {

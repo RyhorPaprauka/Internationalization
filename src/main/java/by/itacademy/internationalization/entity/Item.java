@@ -49,6 +49,7 @@ public class Item {
     @OneToMany(mappedBy = "item",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
+    @Builder.Default
     private Set<ItemLang> translations = new HashSet<>();
 
     public void addLang(Lang lang) {

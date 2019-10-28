@@ -1,6 +1,9 @@
 package by.itacademy.internationalization.service;
 
+import by.itacademy.internationalization.dto.ItemDto;
 import by.itacademy.internationalization.entity.Item;
+import by.itacademy.internationalization.entity.enam.Language;
+import by.itacademy.internationalization.mapper.ItemMapper;
 import by.itacademy.internationalization.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,10 @@ import javax.persistence.EntityNotFoundException;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final ItemMapper itemMapper;
 
-    public Item getByCode(Integer code) {
-        return itemRepository.getByCode(code)
+    public ItemDto getByCode(Integer code, Language language) {
+        return itemRepository.getByCode(code).map(item -> itemMapper.toDto(item, language))
                 .orElseThrow(EntityNotFoundException::new);
     }
 }

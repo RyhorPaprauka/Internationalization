@@ -37,6 +37,7 @@ public class Attribute {
     @OneToMany(mappedBy = "attribute",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
+    @Builder.Default
     private Set<AttributeLang> translations = new HashSet<>();
 
     public void addLang(Lang lang) {
